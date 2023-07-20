@@ -1,22 +1,12 @@
-#!groovy
-// Check ubunutu02 properties
-properties([disableConcurrentBuilds()])
-
 pipeline {
     agent any
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-        timestamps()
-    }
+
     stages {
-        stage("First step") {
+        stage('My-JenkinsBuild-Steps') {
             steps {
-                sh 'ssh root@ubuntu02 \'hostname\''
-            }
-        }
-        stage("Second step") {
-            steps {
-                sh 'ssh root@ubunutu02 \'uptime\''
+               echo "Start"
+               echo "Doing something.."
+               echo "End"
             }
         }
     }
