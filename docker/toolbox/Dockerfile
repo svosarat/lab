@@ -1,4 +1,3 @@
 FROM alpine
-RUN apk add curl wget busybox-extras netcat-openbsd python py-pip bash
-RUN apk --purge -v del py-pip
+RUN apk add curl
 CMD tail -f /dev/null
