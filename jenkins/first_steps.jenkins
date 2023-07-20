@@ -1,12 +1,22 @@
+#!groovy
+// Check ub1 properties
+properties([disableConcurrentBuilds()])
+
 pipeline {
     agent any
-
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
     stages {
-        stage('My-JenkinsBuild-Steps') {
+        stage("First step") {
             steps {
-               echo "Start"
-               echo "Doing something.."
-               echo "End"
+                sh 'ssh root@ub1 \'hostname\''
+            }
+        }
+        stage("Second step") {
+            steps {
+                sh 'ssh root@ub1 \'uptime\''
             }
         }
     }
